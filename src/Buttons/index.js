@@ -21,7 +21,6 @@ const Buttons = (props) => {
         disabled={props.tasks.every(({ done }) => done)}
       >
         Ukończ wszystkie
-        {/* ZEPSUTE, NIE MA BYĆ KLASA DISABLED TYLKO ATRYBUT 31 MINUTA  */}
       </button>
     </div>
   );
