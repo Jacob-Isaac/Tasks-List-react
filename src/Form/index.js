@@ -4,7 +4,6 @@ import "./style.css";
 const Form = () => (
   <form className="section__form">
     <input
-      autofocus
       className="section__form--input"
       placeholder=" Co jest do zrobienia?"
     />
