@@ -1,8 +1,8 @@
-const Hello = (props) => {
-  if (props.name === "")
-  console.log("hellolllo");
-};
+// const Hello = (props) => {
+//   if (props.name === "")
+//   console.log("hellolllo");
+// };
 
-const name = "Krzysiek";
+// const name = "Krzysiek";
 
-export { hello, name };
+// export { hello, name };

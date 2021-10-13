@@ -1,25 +1,22 @@
-import React from "react";
+import { useState } from "react";
 import Form from "./Form";
 import Tasks from "./Tasks";
 import Buttons from "./Buttons";
 import Section from "./Section";
-import {hello, name} from "./utils/hello";
 import "./index.css";
 import "./container.css";
-
-hello();
-console.log(name);
 
 const tasks = [
   { id: 1, content: "przejść na Reacta", done: true },
   { id: 2, content: "zjeść kolacje", done: false },
 ];
 
-const HideOrShow = false;
-
 function App() {
+  const [hideOrShow, setHideOrShow] = useState(false);
 
-  
+  const toggleHideOrShow = () => {
+    setHideOrShow((hideOrShow) => !hideOrShow);
+  };
   return (
     <main className="container">
       <h1 className="container__header">Lista zadań</h1>
@@ -33,9 +30,13 @@ function App() {
         className="section__border section__flex"
         title="Lista zadań"
         extraHeaderContent={
-          <Buttons tasks={tasks} HideOrShow={HideOrShow} />
+          <Buttons
+            tasks={tasks}
+            hideOrShow={hideOrShow}
+            toggleHideOrShow={toggleHideOrShow}
+          />
         }
-        taskContent={<Tasks tasks={tasks} HideOrShow={HideOrShow} />}
+        taskContent={<Tasks tasks={tasks} hideOrShow={hideOrShow} />}
       />
     </main>
   );
