@@ -10,7 +10,7 @@ const Tasks = (props) => (
           task.done && props.hideOrShow ? " section__list--hidden" : ""
         }`}
       >
-        <button className="button button__remove">🗑</button>
+        <button className="button button__remove" onClick={() => props.removeTasks(task.id)}>🗑</button>
         <button className="button button__done">{task.done ? "✔" : ""}</button>
         <span
           className={`content
