@@ -11,7 +11,10 @@ const Tasks = (props) => (
         }`}
       >
         <button className="button button__remove" onClick={() => props.removeTasks(task.id)}>🗑</button>
-        <button className="button button__done">{task.done ? "✔" : ""}</button>
+        <button 
+        className="button button__done"
+        onClick={() => props.toggleTaskDone(task.id)}>
+          {task.done ? "✔" : ""}</button>
         <span
           className={`content
       ${task.done ? "content--decoration" : ""}`}

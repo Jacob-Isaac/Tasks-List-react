@@ -20,6 +20,16 @@ function App() {
     setTasks(tasks => tasks.filter(task=>task.id !==id));
   };
   
+  const toggleTaskDone = (id) => {
+    setTasks(tasks => tasks.map(task=> {
+        if (task.id === id) {
+          return {...task, done: !task.done};
+        }
+        else {
+        return task;
+        }
+        }));
+  }
   return (
     <main className="container">
       <h1 className="container__header">Lista zadań</h1>
@@ -39,7 +49,11 @@ function App() {
             toggleHideOrShow={toggleHideOrShow}
           />
         }
-        taskContent={<Tasks tasks={tasks} hideOrShow={hideOrShow} removeTasks={removeTasks}/>}
+        taskContent={<Tasks 
+          tasks={tasks} 
+          hideOrShow={hideOrShow} 
+          removeTasks={removeTasks}
+          toggleTaskDone={toggleTaskDone}/>}
       />
     </main>
   );
