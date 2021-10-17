@@ -20,6 +20,7 @@ const Buttons = (props) => {
           props.tasks.length === 0 ? " section__button--hidden" : ""
         }`}
         disabled={props.tasks.every(({ done }) => done)}
+        onClick={props.setAllDone}
       >
         Ukończ wszystkie
       </button>
