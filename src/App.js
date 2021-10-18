@@ -6,46 +6,50 @@ import Section from "./Section";
 import "./index.css";
 import "./container.css";
 
-
 function App() {
   const [hideOrShow, setHideOrShow] = useState(false);
- const [tasks, setTasks] = useState([
-  { id: 1, content: "przejść na Reacta", done: true },
-  { id: 2, content: "zjeść kolacje", done: false },
-]);
+  const [tasks, setTasks] = useState([
+    { id: 1, content: "przejść na Reacta", done: true },
+    { id: 2, content: "zjeść kolacje", done: false },
+  ]);
   const toggleHideOrShow = () => {
     setHideOrShow((hideOrShow) => !hideOrShow);
   };
   const removeTasks = (id) => {
-    setTasks(tasks => tasks.filter(task=>task.id !==id));
+    setTasks((tasks) => tasks.filter((task) => task.id !== id));
   };
-  
+
   const toggleTaskDone = (id) => {
-    setTasks(tasks => tasks.map(task=> {
+    setTasks((tasks) =>
+      tasks.map((task) => {
         if (task.id === id) {
-          return {...task, done: !task.done};
+          return { ...task, done: !task.done };
+        } else {
+          return task;
         }
-        else {
-        return task;
-        }
-        }));
-  }
+      })
+    );
+  };
 
   const setAllDone = () => {
-    setTasks(tasks => tasks.map(task => ({...task, done:true,})));
+    setTasks((tasks) => tasks.map((task) => ({ ...task, done: true })));
   };
 
   const addNewTask = (newContent) => {
-    setTasks(tasks => [
-      ...tasks,
-      {
-        content: newContent,
-        done:false,
-        id: tasks.length === 0 ? 1 : tasks[tasks.length-1].id + 1,
-      },
-
-    ]);
-  }
+    setTasks((tasks) => {
+      if (newContent === "") {
+        return [...tasks,];
+      }
+      return [
+        ...tasks,
+        {
+          content: newContent,
+          done: false,
+          id: tasks.length === 0 ? 1 : tasks[tasks.length - 1].id + 1,
+        },
+      ];
+    });
+  };
 
   return (
     <main className="container">
@@ -54,7 +58,7 @@ function App() {
       <Section
         className="section__border"
         title="Dodaj nowe zadanie"
-        taskContent={<Form addNewTask={addNewTask}/>}
+        taskContent={<Form addNewTask={addNewTask} />}
       />
       <Section
         className="section__border section__flex"
@@ -67,11 +71,14 @@ function App() {
             setAllDone={setAllDone}
           />
         }
-        taskContent={<Tasks 
-          tasks={tasks} 
-          hideOrShow={hideOrShow} 
-          removeTasks={removeTasks}
-          toggleTaskDone={toggleTaskDone}/>}
+        taskContent={
+          <Tasks
+            tasks={tasks}
+            hideOrShow={hideOrShow}
+            removeTasks={removeTasks}
+            toggleTaskDone={toggleTaskDone}
+          />
+        }
       />
     </main>
   );
